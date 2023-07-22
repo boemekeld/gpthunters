@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>GPT Hunters</title>
+    <title>Hacker News Clone</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>GPT Hunters</h1>
+        <h1>Hacker News Clone</h1>
         <nav>
             <ul>
                 <li><a href="#">Top</a></li>
@@ -20,16 +20,65 @@
 
     <main>
         <section class="post">
-            <h2><a href="#">Sample Post Title</a></h2>
+            <h2><a href="#">Sample Post Title 1</a></h2>
             <p>123 points by JohnDoe 1 hour ago | 45 comments</p>
+            <div class="vote-container">
+                <button class="upvote-button">
+                    <span class="vote-count">0</span> <!-- Contador de votos -->
+                    Upvote
+                </button>
+                <button class="comments-button" onclick="toggleComments(this)">Visualizar Comentários</button>
+            </div>
+            <div class="comments" style="display: none;">
+                <p>Comment 1 for Sample Post 1</p>
+                <p>Comment 2 for Sample Post 1</p>
+            </div>
         </section>
 
-        <!-- More post sections can be added here -->
+        <section class="post">
+            <h2><a href="#">Sample Post Title 2</a></h2>
+            <p>88 points by JaneSmith 2 hours ago | 20 comments</p>
+            <div class="vote-container">
+                <button class="upvote-button">
+                    <span class="vote-count">0</span> <!-- Contador de votos -->
+                    Upvote
+                </button>
+                <button class="comments-button" onclick="toggleComments(this)">Visualizar Comentários</button>
+            </div>
+            <div class="comments" style="display: none;">
+                <p>Comment 1 for Sample Post 2</p>
+                <p>Comment 2 for Sample Post 2</p>
+            </div>
+        </section>
+
+        <!-- More posts can be added here -->
     </main>
 
     <footer>
-        <p>&copy; 2023 GPT Hunters. All rights reserved.</p>
+        <p>&copy; 2023 Your Website. All rights reserved.</p>
     </footer>
+
+    <div class="chat">
+        <div class="chat-window">
+            <div class="chat-history">
+                <!-- Chat messages will be displayed here -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="message-input" placeholder="Digite sua mensagem...">
+                <button id="send-button">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleComments(button) {
+            var commentsContainer = button.parentElement.nextElementSibling;
+            if (commentsContainer.style.display === "none") {
+                commentsContainer.style.display = "block";
+            } else {
+                commentsContainer.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
-

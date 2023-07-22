@@ -38,6 +38,10 @@ main {
 
 .post {
     margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
 }
 
 .post h2 {
@@ -54,11 +58,76 @@ main {
     color: #666;
 }
 
+.upvote-button {
+    padding: 5px 10px;
+    background-color: #ff6600;
+    color: white;
+    border: 1px solid #ff6600;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.comments-button {
+    background-color: #f6f6ef;
+    color: #666;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.comments {
+    margin-top: 10px;
+    display: none;
+}
+
+.chat {
+    position: fixed;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.chat-window {
+    background-color: #f6f6ef;
+    border: 1px solid #ccc;
+    max-width: 800px;
+    width: 100%;
+    padding: 10px;
+}
+
+.chat-history {
+    margin-bottom: 10px;
+}
+
+.chat-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-input input[type="text"] {
+    flex: 1;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+}
+
+.chat-input button {
+    padding: 5px 10px;
+    background-color: #ff6600;
+    color: white;
+    border: 1px solid #ff6600;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
 footer {
     background-color: #f6f6ef;
     text-align: center;
     padding: 10px;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
 }
