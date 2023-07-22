@@ -2,6 +2,9 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    color: #333;
+    background-color: #f6f6ef;
+    transition: background-color 0.3s ease;
 }
 
 header {
@@ -112,6 +115,8 @@ main {
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px 0 0 5px;
+    color: #fff;
+    background-color: #444;
 }
 
 .chat-input button {
@@ -123,11 +128,92 @@ main {
     cursor: pointer;
 }
 
+.post header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.share-button {
+    padding: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.fa-share-alt::before {
+    content: "\f1e0";
+    color: #ccc;
+}
+
 footer {
     background-color: #f6f6ef;
+    color: #333;
     text-align: center;
     padding: 10px;
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+/* Estilos para o tema dark */
+body.dark-theme {
+    color: #f6f6ef;
+    background-color: #222;
+}
+
+header.dark-theme {
+    background-color: #444;
+}
+
+nav ul li a.dark-theme {
+    color: #fff;
+}
+
+.post.dark-theme {
+    background-color: #444;
+    color: #f6f6ef;
+}
+
+.post h2 a.dark-theme {
+    color: #ff6600;
+}
+
+.post p.dark-theme {
+    color: #ccc;
+}
+
+.upvote-button.dark-theme {
+    background-color: #ff5500;
+    border-color: #ff5500;
+}
+
+.comments-button.dark-theme {
+    background-color: #555;
+    color: #ccc;
+    border-color: #666;
+}
+
+.comments.dark-theme {
+    border-color: #666;
+}
+
+.chat.dark-theme {
+    background-color: #444;
+    border-color: #555;
+    color: #f6f6ef;
+}
+
+.chat-input input[type="text"].dark-theme {
+    color: #fff;
+    background-color: #333;
+}
+
+.chat-input button.dark-theme {
+    background-color: #ff5500;
+    border-color: #ff5500;
+}
+
+footer.dark-theme {
+    background-color: #222;
+    color: #ccc;
 }

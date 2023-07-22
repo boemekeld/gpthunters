@@ -2,9 +2,10 @@
 <html>
 <head>
     <title>Hacker News Clone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="dark-theme">
     <header>
         <h1>Hacker News Clone</h1>
         <nav>
@@ -20,7 +21,12 @@
 
     <main>
         <section class="post">
+           <header>
             <h2><a href="#">Sample Post Title 1</a></h2>
+            <div class="share-button">
+                <i class="fa fa-share-alt"></i> <!-- Ícone de compartilhamento -->
+            </div>
+           </header>
             <p>123 points by JohnDoe 1 hour ago | 45 comments</p>
             <div class="vote-container">
                 <button class="upvote-button">
@@ -41,7 +47,12 @@
         </section>
 
         <section class="post">
+           <header>
             <h2><a href="#">Sample Post Title 2</a></h2>
+            <div class="share-button">
+                <i class="fa fa-share-alt"></i> <!-- Ícone de compartilhamento -->
+            </div>
+           </header>
             <p>88 points by JaneSmith 2 hours ago | 20 comments</p>
             <div class="vote-container">
                 <button class="upvote-button">
