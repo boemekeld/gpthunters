@@ -32,6 +32,11 @@
             <div class="comments" style="display: none;">
                 <p>Comment 1 for Sample Post 1</p>
                 <p>Comment 2 for Sample Post 1</p>
+                <button class="add-comment-button" onclick="toggleAddComment(this)">Adicionar Comentário</button>
+                <div class="add-comment" style="display: none;">
+                    <input type="text" class="comment-input" placeholder="Digite seu comentário...">
+                    <button class="submit-comment-button">Enviar</button>
+                </div>
             </div>
         </section>
 
@@ -48,6 +53,11 @@
             <div class="comments" style="display: none;">
                 <p>Comment 1 for Sample Post 2</p>
                 <p>Comment 2 for Sample Post 2</p>
+                <button class="add-comment-button" onclick="toggleAddComment(this)">Adicionar Comentário</button>
+                <div class="add-comment" style="display: none;">
+                    <input type="text" class="comment-input" placeholder="Digite seu comentário...">
+                    <button class="submit-comment-button">Enviar</button>
+                </div>
             </div>
         </section>
 
@@ -77,6 +87,15 @@
                 commentsContainer.style.display = "block";
             } else {
                 commentsContainer.style.display = "none";
+            }
+        }
+
+        function toggleAddComment(button) {
+            var addCommentContainer = button.nextElementSibling;
+            if (addCommentContainer.style.display === "none") {
+                addCommentContainer.style.display = "block";
+            } else {
+                addCommentContainer.style.display = "none";
             }
         }
     </script>
