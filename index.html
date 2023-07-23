@@ -20,7 +20,7 @@
 <body class="bg-[#343541]">
 
     <header class="flex flex-col items-center justify-center">
-        <h1 class="text-[#00897B] text-5xl font-bold p-10">GPT Hunters</h1>
+        <h1 class="text-[#00897B] text-5xl font-bold p-10"><a href="/">GPT Hunters</a></h1>
     </header>
 
     <div class="flex justify-center p-5">
@@ -122,8 +122,60 @@
         </div>
 
     </main>
+
+    <div id="loading" class="flex flex-col items-center justify-center"></div>
 </body>
 
 <script src="./config-tailwind.js"></script>
+
+<script>
+    window.onload = initPage
+
+    //const componentHeader = document.getElementById('component-header')
+    //const crawlerContent = document.getElementById('crawler-content')
+
+    async function initPage() {
+        setLoading(true)
+        const response = await serviceGetLoadCrawler()
+        console.log("Resposta: ", response)
+        const { statusCode, body: { data } } = response
+        setLoading(false)
+
+        //componentHeader.innerHTML = ComponentHeader(title, author, date)
+        //crawlerContent.innerHTML = JSON.parse(content).join('\n')
+    }
+
+    function setLoading(enable = false) {
+        if (enable) document.getElementById("loading").innerHTML = ComponentLoading()
+        else document.getElementById("loading").innerHTML = ""
+    }
+
+    async function serviceGetLoadCrawler() {
+        return await fetch(`https://gpthunters.com/api/list`)
+            .then(response => response.json())
+            .then(data => data)
+            .catch(error => console.log("Houve error: ", error))
+    }
+
+    function ComponentHeader(title, author, date) {
+        let author_date = author ? `${author} • ${date}` : date
+        let aux = ""
+        aux += `<div class="mb-1 border-b border-gray-100 pt-3 sm:mb-2 sm:pb-6 sm:pt-8">`
+        aux += `    <h1 class="max-w-md text-3xl font-semibold leading-tight text-gray-700 dark:text-gray-100 sm:text-4xl">${title}</h1>`
+        aux += `    <div class="pt-3 text-base text-gray-400 sm:pt-4">${author_date}</div>`
+        aux += `</div>`
+        return aux
+    }
+
+    function ComponentLoading() {
+        let aux = ""
+        aux += '<svg style="color: white" xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-repeat animate-spin" viewBox="0 0 16 16">'
+        aux += '    <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>'
+        aux += '    <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>'
+        aux += '</svg>'
+        return aux
+    }
+
+</script>
 
 </html>

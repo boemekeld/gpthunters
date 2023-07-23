@@ -9,6 +9,7 @@ api.get('/', async (req, res) => {
 
 api.get('/list', async (req, res) => {
   try {
+    res.cors();
     const rs = await client.execute({
       sql: "SELECT * FROM chat",
       args: []
@@ -75,6 +76,7 @@ api.get('/table', async (req, res) => {
 
 api.get('/crawler', async (req, res) => {
   try {
+    res.cors();
     const url = req.query["url"] || '';
 
     const rs = await client.execute({
