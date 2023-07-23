@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- Default Error -->
+    <div class="flex items-center justify-center">
+        <div id="error" role="alert" class="w-[800px]">
+            <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
+                <p id="error-message" class="font-bold">Status: 400</p>
+                <p id="error-description" class="text-sm">Some additional text to explain said message.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Fim Default Error -->
+
+</body>
+
+<script>
+    
+    function alertError(status, message){
+        const error = document.getElementById('error')
+        const errorMessage = document.getElementById('error-message')
+        const errorDescription = document.getElementById('error-description')
+        errorMessage.innerHTML = `Status: ${status}`
+        errorDescription.innerHTML = message
+        error.hidden = false
+    }
+</script>
+
+</html>

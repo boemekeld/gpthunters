@@ -4,5 +4,8 @@
   "workspaces": [
     "api/core",
     "packages/gpt-crawler"
-  ]
+  ],
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  }
 }
