@@ -1,15 +1,31 @@
 const api = require('lambda-api')();
+const createClient = require('@libsql/client').createClient;
+const client = createClient({ url: 'libsql://gpthunters-boemekeld.turso.io', authToken: 'eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTAwOTUzMDIsImlkIjoiYjM1YjEwNjctMjkyNS0xMWVlLTk1ODEtMWE4NjY5MWUyODU2In0.T93iddRYFyfM0hKZo0zxaM131V8TbtZN80uC8NWlNSJz7EHhW-pMptnAlH6ZcIAZlaocfc_PRrFbjnXgdW99Dw' });
 
 api.get('/', async (req, res) => {
   return { status: 'ok' };
 });
 
+api.get('/list', async (req, res) => {
+  try {
+    const rs = await client.execute({
+      sql: "SELECT * FROM chat",
+      args: []
+    });
+    return { status: 'ok', chats: rs.rows };
+  } catch (error) {
+    console.error(error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify(error.message),
+    };
+  }
+});
+
+
 api.get('/crawler', async (req, res) => {
   try {
     const url = req.query["url"] || '';
-
-    const createClient = require('@libsql/client').createClient;
-    const client = createClient({ url: 'libsql://gpthunters-boemekeld.turso.io', authToken: 'eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTAwOTUzMDIsImlkIjoiYjM1YjEwNjctMjkyNS0xMWVlLTk1ODEtMWE4NjY5MWUyODU2In0.T93iddRYFyfM0hKZo0zxaM131V8TbtZN80uC8NWlNSJz7EHhW-pMptnAlH6ZcIAZlaocfc_PRrFbjnXgdW99Dw' });
 
     const rs = await client.execute({
       sql: "SELECT * FROM chat WHERE url = ?",
