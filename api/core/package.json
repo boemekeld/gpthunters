@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "gpt-crawler": "file:../../packages/gpt-crawler"
+  }
+}
