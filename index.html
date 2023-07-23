@@ -1,111 +1,122 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Hacker News Clone</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>GPT Hunters</title>
 </head>
-<body class="dark-theme">
-    <header>
-        <h1>Hacker News Clone</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Top</a></li>
-                <li><a href="#">New</a></li>
-            </ul>
-        </nav>
+
+<body class="bg-[#343541]">
+
+    <header class="flex flex-col items-center justify-center ">
+        <h1 class="text-[#00897B] text-5xl font-bold p-10">GPT Hunters</h1>
     </header>
 
-    <main>
-        <section class="post">
-           <header>
-            <h2><a href="#">Sample Post Title 1</a></h2>
-            <div class="share-button">
-                <i class="fa fa-share-alt"></i> <!-- Ícone de compartilhamento -->
-            </div>
-           </header>
-            <p>123 points by JohnDoe 1 hour ago | 45 comments</p>
-            <div class="vote-container">
-                <button class="upvote-button">
-                    <span class="vote-count">0</span> <!-- Contador de votos -->
-                    Upvote
-                </button>
-                <button class="comments-button" onclick="toggleComments(this)">Visualizar Comentários</button>
-            </div>
-            <div class="comments" style="display: none;">
-                <p>Comment 1 for Sample Post 1</p>
-                <p>Comment 2 for Sample Post 1</p>
-                <button class="add-comment-button" onclick="toggleAddComment(this)">Adicionar Comentário</button>
-                <div class="add-comment" style="display: none;">
-                    <input type="text" class="comment-input" placeholder="Digite seu comentário...">
-                    <button class="submit-comment-button">Enviar</button>
+    <main class="flex flex-col items-center justify-center gap-4">
+
+        <div class="text-white flex w-[50%] flex-row rounded-lg border border-gray-100 bg-transparent p-4 shadow-xl">
+            <div class="grid w-4/5 gap-2">
+                <h1 class="text-3xl font-semibold">HTML Crawler NPM Packages</h1>
+                <div class="flex items-center gap-2">
+                    <div class="text-md">July 21, 2023 • Lucas Boemeke</div>
+                    <button class="px-2 py-1 bg-[#2B2C2F] rounded-full flex items-center gap-1">
+                        <img class="w-7 button"
+                            src='//de9xxjhuq2c2j.cloudfront.net/apps/live-20200930-1/images/emoji/emoji-apple/1f603.png' />
+                        <p class="text-white font-semibold text-sm">14</p>
+                    </button>
                 </div>
             </div>
-        </section>
-
-        <section class="post">
-           <header>
-            <h2><a href="#">Sample Post Title 2</a></h2>
-            <div class="share-button">
-                <i class="fa fa-share-alt"></i> <!-- Ícone de compartilhamento -->
-            </div>
-           </header>
-            <p>88 points by JaneSmith 2 hours ago | 20 comments</p>
-            <div class="vote-container">
-                <button class="upvote-button">
-                    <span class="vote-count">0</span> <!-- Contador de votos -->
-                    Upvote
+            <div class="flex w-1/5 items-center justify-end">
+                <button class="rounded-lg bg-[#00897B] px-4 py-3 flex flex-col justify-center items-center gap-0">
+                    <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.50684 0L16.3011 13.5H0.712607L8.50684 0Z" fill="white" />
+                    </svg>
+                    <p class="text-white font-semibold text-sm">450</p>
                 </button>
-                <button class="comments-button" onclick="toggleComments(this)">Visualizar Comentários</button>
-            </div>
-            <div class="comments" style="display: none;">
-                <p>Comment 1 for Sample Post 2</p>
-                <p>Comment 2 for Sample Post 2</p>
-                <button class="add-comment-button" onclick="toggleAddComment(this)">Adicionar Comentário</button>
-                <div class="add-comment" style="display: none;">
-                    <input type="text" class="comment-input" placeholder="Digite seu comentário...">
-                    <button class="submit-comment-button">Enviar</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- More posts can be added here -->
-    </main>
-
-    <footer>
-        <p>&copy; 2023 Your Website. All rights reserved.</p>
-    </footer>
-
-    <div class="chat">
-        <div class="chat-window">
-            <div class="chat-history">
-                <!-- Chat messages will be displayed here -->
-            </div>
-            <div class="chat-input">
-                <input type="text" id="message-input" placeholder="Digite sua mensagem...">
-                <button id="send-button">Enviar</button>
             </div>
         </div>
-    </div>
 
-    <script>
-        function toggleComments(button) {
-            var commentsContainer = button.parentElement.nextElementSibling;
-            if (commentsContainer.style.display === "none") {
-                commentsContainer.style.display = "block";
-            } else {
-                commentsContainer.style.display = "none";
-            }
-        }
+        <div class="text-white flex w-[50%] flex-row rounded-lg border border-gray-100 bg-transparent p-4 shadow-xl">
+            <div class="grid w-4/5 gap-2">
+                <h1 class="text-3xl font-semibold">HTML Crawler NPM Packages</h1>
+                <div class="flex items-center gap-2">
+                    <div class="text-md">July 21, 2023 • Lucas Boemeke</div>
+                    <button class="px-2 py-1 bg-[#2B2C2F] rounded-full flex items-center gap-1">
+                        <img class="w-7 button"
+                            src='//de9xxjhuq2c2j.cloudfront.net/apps/live-20200930-1/images/emoji/emoji-apple/1f603.png' />
+                        <p class="text-white font-semibold text-sm">14</p>
+                    </button>
+                </div>
+            </div>
+            <div class="flex w-1/5 items-center justify-end">
+                <button class="rounded-lg bg-[#00897B] px-4 py-3 flex flex-col justify-center items-center gap-0">
+                    <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.50684 0L16.3011 13.5H0.712607L8.50684 0Z" fill="white" />
+                    </svg>
+                    <p class="text-white font-semibold text-sm">450</p>
+                </button>
+            </div>
+        </div>
 
-        function toggleAddComment(button) {
-            var addCommentContainer = button.nextElementSibling;
-            if (addCommentContainer.style.display === "none") {
-                addCommentContainer.style.display = "block";
-            } else {
-                addCommentContainer.style.display = "none";
-            }
-        }
-    </script>
+        <div class="text-white flex w-[50%] flex-row rounded-lg border border-gray-100 bg-transparent p-4 shadow-xl">
+            <div class="grid w-4/5 gap-2">
+                <h1 class="text-3xl font-semibold">HTML Crawler NPM Packages</h1>
+                <div class="flex items-center gap-2">
+                    <div class="text-md">July 21, 2023 • Lucas Boemeke</div>
+                    <button class="px-2 py-1 bg-[#2B2C2F] rounded-full flex items-center gap-1">
+                        <img class="w-7 button"
+                            src='//de9xxjhuq2c2j.cloudfront.net/apps/live-20200930-1/images/emoji/emoji-apple/1f603.png' />
+                        <p class="text-white font-semibold text-sm">14</p>
+                    </button>
+                </div>
+            </div>
+            <div class="flex w-1/5 items-center justify-end">
+                <button class="rounded-lg bg-[#00897B] px-4 py-3 flex flex-col justify-center items-center gap-0">
+                    <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.50684 0L16.3011 13.5H0.712607L8.50684 0Z" fill="white" />
+                    </svg>
+                    <p class="text-white font-semibold text-sm">450</p>
+                </button>
+            </div>
+        </div>
+
+        <div class="text-white flex w-[50%] flex-row rounded-lg border border-gray-100 bg-transparent p-4 shadow-xl">
+            <div class="grid w-4/5 gap-2">
+                <h1 class="text-3xl font-semibold">HTML Crawler NPM Packages</h1>
+                <div class="flex items-center gap-2">
+                    <div class="text-md">July 21, 2023 • Lucas Boemeke</div>
+                    <button class="px-2 py-1 bg-[#2B2C2F] rounded-full flex items-center gap-1">
+                        <img class="w-7 button"
+                            src='//de9xxjhuq2c2j.cloudfront.net/apps/live-20200930-1/images/emoji/emoji-apple/1f603.png' />
+                        <p class="text-white font-semibold text-sm">14</p>
+                    </button>
+                </div>
+            </div>
+            <div class="flex w-1/5 items-center justify-end">
+                <button class="rounded-lg bg-[#00897B] px-4 py-3 flex flex-col justify-center items-center gap-0">
+                    <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.50684 0L16.3011 13.5H0.712607L8.50684 0Z" fill="white" />
+                    </svg>
+                    <p class="text-white font-semibold text-sm">450</p>
+                </button>
+            </div>
+        </div>
+
+    </main>
 </body>
+
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    clifford: '#da373d',
+                }
+            }
+        }
+    }
+</script>
+
 </html>
