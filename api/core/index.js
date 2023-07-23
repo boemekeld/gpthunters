@@ -34,6 +34,19 @@ api.get('/crawler', async (req, res) => {
     const crawler = new GptCrawler();
     const data = await crawler.fetchUrl(url);
   
+    await client.execute({
+      sql: "INSERT INTO chat VALUES(?,?,?,?,?,?,?)",
+      args: [
+        Math.random(),
+        url,
+        data.author,
+        data.date,
+        JSON.stringify(data.content),
+        '0',
+        'create_at'
+      ]
+    });
+
     const response = {
       statusCode: 200,
       body: {
