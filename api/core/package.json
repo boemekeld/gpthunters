@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "gpt-crawler": "file:../../packages/gpt-crawler"
+    "gpt-crawler": "file:../../packages/gpt-crawler",
+    "lambda-api": "^1.0.3"
   }
 }

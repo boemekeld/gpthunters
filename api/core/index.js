@@ -1,6 +1,12 @@
-const GptCrawler = require("gpt-crawler");
+const api = require('lambda-api')();
 
-exports.handler = async (event) => {
+api.get('/', async (req, res) => {
+  return { status: 'ok' };
+});
+
+api.get('/crawler', async (req, res) => {
+  const GptCrawler = require("gpt-crawler");
+
   const url = "https://chat.openai.com/share/fdf7971b-8978-4150-9ed3-40dab3dde0bd";
 
   const crawler = new GptCrawler();
@@ -13,4 +19,8 @@ exports.handler = async (event) => {
     }),
   };
   return response;
+});
+
+exports.handler = async (event, context) => {
+  return await api.run(event, context);
 };
