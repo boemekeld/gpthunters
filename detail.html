@@ -84,7 +84,7 @@
         setLoading(false)
         const { title, author, date, content } = data
         componentHeader.innerHTML = ComponentHeader(title, author, date)
-        crawlerContent.innerHTML = content.join('\n')
+        crawlerContent.innerHTML = JSON.parse(content).join('\n')
     }
 
     function setLoading(enable = false) {

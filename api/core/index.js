@@ -33,7 +33,8 @@ api.get('/crawler', async (req, res) => {
   
     const crawler = new GptCrawler();
     const data = await crawler.fetchUrl(url);
-  
+    data.content = JSON.stringify(data.content);
+
     await client.execute({
       sql: "INSERT INTO chat VALUES(?,?,?,?,?,?,?)",
       args: [
@@ -41,7 +42,7 @@ api.get('/crawler', async (req, res) => {
         url,
         data.author,
         data.date,
-        JSON.stringify(data.content),
+        data.content,
         '0',
         'create_at'
       ]
