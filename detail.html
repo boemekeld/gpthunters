@@ -5,14 +5,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preload" href="https://cdn.openai.com/common/fonts/soehne/soehne-buch.woff2" as="font" crossorigin="">
-    <link rel="preload" href="https://cdn.openai.com/common/fonts/soehne/soehne-halbfett.woff2" as="font" crossorigin="">
-    <link rel="preload" href="https://cdn.openai.com/common/fonts/soehne/soehne-mono-buch.woff2" as="font" crossorigin="">
-    <link rel="preload" href="https://cdn.openai.com/common/fonts/soehne/soehne-mono-halbfett.woff2" as="font" crossorigin="">
+    <link rel="preload" href="https://cdn.openai.com/common/fonts/soehne/soehne-halbfett.woff2" as="font"
+        crossorigin="">
+    <link rel="preload" href="https://cdn.openai.com/common/fonts/soehne/soehne-mono-buch.woff2" as="font"
+        crossorigin="">
+    <link rel="preload" href="https://cdn.openai.com/common/fonts/soehne/soehne-mono-halbfett.woff2" as="font"
+        crossorigin="">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>GPT Hunters</title>
     <style>
         body {
-            font-family: Söhne,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,Helvetica Neue,Arial,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+            font-family: Söhne, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, Helvetica Neue, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
         }
     </style>
 </head>
@@ -34,16 +37,16 @@
             <div class="h-full overflow-auto dark:bg-gray-800">
                 <!-- Inicio terceira Div -->
                 <div class="flex h-full flex-col text-sm dark:bg-gray-800">
-                    
+
                     <!-- Header Component -->
                     <div id="component-header" class="mx-auto w-full p-4 md:max-w-2xl lg:max-w-xl lg:px-0 xl:max-w-3xl">
-                        
+
                     </div>
                     <!-- Fim Header Component -->
 
                     <!-- Crawler Content -->
                     <main id="crawler-content">
-                        
+
                     </main>
                     <!-- Fim Crawler Content -->
 
@@ -56,6 +59,8 @@
     </main>
     <!-- Fim Conteudo principal do template do GPT -->
 
+    <div id="loading" class="flex flex-col items-center justify-center"></div>
+
 </body>
 
 <script>
@@ -64,46 +69,35 @@
     const componentHeader = document.getElementById('component-header')
     const crawlerContent = document.getElementById('crawler-content')
 
-    async function initPage(){
+    async function initPage() {
         const params = new URLSearchParams(window.location.search)
         const url = params.get('url')
-        if(!url) {
-            window.location.href = '/'
-            return
-        }
-        
+        if (!url) return window.location.href = '/'
         setLoading(true)
         const response = await serviceGetLoadCrawler(url)
         console.log("Resposta: ", response)
-        const {statusCode, body: { data }} = response
-        
-        if(statusCode !== 200) {
-            window.location.href = '/'
-            return
-        }
+        if (!response) return window.location.href = '/'
+        const { statusCode, body: { data } } = response
+        if (statusCode !== 200) return window.location.href = '/'
         setLoading(false)
         const { title, author, date, content } = data
         componentHeader.innerHTML = ComponentHeader(title, author, date)
         crawlerContent.innerHTML = content.join('\n')
     }
-    
-    function setLoading(enable=false){
-        if(enable) {
-            crawlerContent.classList.add('flex', 'flex-col', 'animate-pulse', 'justify-center', 'items-center')
-            crawlerContent.innerHTML = ComponentLoading()
-        } else {
-            crawlerContent.classList.remove('flex', 'flex-col', 'animate-pulse', 'justify-center', 'items-center')
-        }
+
+    function setLoading(enable = false) {
+        if (enable) document.getElementById("loading").innerHTML = ComponentLoading()
+        else document.getElementById("loading").innerHTML = ""
     }
 
-    async function serviceGetLoadCrawler(url){
+    async function serviceGetLoadCrawler(url) {
         return await fetch(`/api/crawler?url=${url}`)
             .then(response => response.json())
             .then(data => data)
             .catch(error => console.log("Houve error: ", error))
     }
 
-    function ComponentHeader(title, author, date){
+    function ComponentHeader(title, author, date) {
         let author_date = author ? `${author} • ${date}` : date
         let aux = ""
         aux += `<div class="mb-1 border-b border-gray-100 pt-3 sm:mb-2 sm:pb-6 sm:pt-8">`
@@ -113,7 +107,7 @@
         return aux
     }
 
-    function ComponentLoading(){
+    function ComponentLoading() {
         let aux = ""
         aux += '<svg style="color: white" xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-repeat animate-spin" viewBox="0 0 16 16">'
         aux += '    <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>'
