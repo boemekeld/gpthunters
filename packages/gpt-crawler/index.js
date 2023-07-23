@@ -27,7 +27,7 @@ class GptCrawler {
         date = document.querySelector('.pt-3.text-base.text-gray-400').textContent;
       }
 
-      const content = Array.from(document.querySelectorAll('.flex.flex-col.h-full.text-sm .group')).map(item => item.innerHTML);
+      const content = Array.from(document.querySelectorAll('.flex.flex-col.h-full.text-sm .group')).map(item => item.outerHTML);
 
       return {
         title,
