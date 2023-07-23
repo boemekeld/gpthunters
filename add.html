@@ -5,14 +5,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preload" href="https://cdn.openai.com/common/fonts/soehne/soehne-buch.woff2" as="font" crossorigin="">
-    <link rel="preload" href="https://cdn.openai.com/common/fonts/soehne/soehne-halbfett.woff2" as="font" crossorigin="">
-    <link rel="preload" href="https://cdn.openai.com/common/fonts/soehne/soehne-mono-buch.woff2" as="font" crossorigin="">
-    <link rel="preload" href="https://cdn.openai.com/common/fonts/soehne/soehne-mono-halbfett.woff2" as="font" crossorigin="">
+    <link rel="preload" href="https://cdn.openai.com/common/fonts/soehne/soehne-halbfett.woff2" as="font"
+        crossorigin="">
+    <link rel="preload" href="https://cdn.openai.com/common/fonts/soehne/soehne-mono-buch.woff2" as="font"
+        crossorigin="">
+    <link rel="preload" href="https://cdn.openai.com/common/fonts/soehne/soehne-mono-halbfett.woff2" as="font"
+        crossorigin="">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>GPT Hunters</title>
     <style>
         body {
-            font-family: Söhne,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,Helvetica Neue,Arial,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+            font-family: Söhne, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, Helvetica Neue, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
         }
     </style>
 </head>
@@ -25,97 +28,30 @@
 
     <main class="flex flex-col items-center justify-center gap-4">
 
-        <div class="text-white flex w-[50%] flex-row rounded-lg border border-gray-100 bg-transparent p-4 shadow-xl">
-            <div class="grid w-4/5 gap-2">
-                <h1 class="text-3xl font-semibold">HTML Crawler NPM Packages</h1>
-                <div class="flex items-center gap-2">
-                    <div class="text-md">July 21, 2023 • Lucas Boemeke</div>
-                    <button class="px-2 py-1 bg-[#2B2C2F] rounded-full flex items-center gap-1">
-                        <img class="w-7 button"
-                            src='//de9xxjhuq2c2j.cloudfront.net/apps/live-20200930-1/images/emoji/emoji-apple/1f603.png' />
-                        <p class="text-white font-semibold text-sm">14</p>
-                    </button>
-                </div>
+        <form action="/detail" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-2/6">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="url">
+                    Insert your url conversation gpt here
+                </label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="url" name="url" type="text" placeholder="url">
             </div>
-            <div class="flex w-1/5 items-center justify-end">
-                <button class="rounded-lg bg-[#00897B] px-4 py-3 flex flex-col justify-center items-center gap-0">
-                    <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.50684 0L16.3011 13.5H0.712607L8.50684 0Z" fill="white" />
-                    </svg>
-                    <p class="text-white font-semibold text-sm">450</p>
-                </button>
+            <div class="flex items-center justify-between">
+                <input
+                    class="bg-[#343541] hover:bg-[#00897B] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    type="submit"
+                    value="Send"/>
             </div>
-        </div>
-
-        <div class="text-white flex w-[50%] flex-row rounded-lg border border-gray-100 bg-transparent p-4 shadow-xl">
-            <div class="grid w-4/5 gap-2">
-                <h1 class="text-3xl font-semibold">HTML Crawler NPM Packages</h1>
-                <div class="flex items-center gap-2">
-                    <div class="text-md">July 21, 2023 • Lucas Boemeke</div>
-                    <button class="px-2 py-1 bg-[#2B2C2F] rounded-full flex items-center gap-1">
-                        <img class="w-7 button"
-                            src='//de9xxjhuq2c2j.cloudfront.net/apps/live-20200930-1/images/emoji/emoji-apple/1f603.png' />
-                        <p class="text-white font-semibold text-sm">14</p>
-                    </button>
-                </div>
-            </div>
-            <div class="flex w-1/5 items-center justify-end">
-                <button class="rounded-lg bg-[#00897B] px-4 py-3 flex flex-col justify-center items-center gap-0">
-                    <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.50684 0L16.3011 13.5H0.712607L8.50684 0Z" fill="white" />
-                    </svg>
-                    <p class="text-white font-semibold text-sm">450</p>
-                </button>
-            </div>
-        </div>
-
-        <div class="text-white flex w-[50%] flex-row rounded-lg border border-gray-100 bg-transparent p-4 shadow-xl">
-            <div class="grid w-4/5 gap-2">
-                <h1 class="text-3xl font-semibold">HTML Crawler NPM Packages</h1>
-                <div class="flex items-center gap-2">
-                    <div class="text-md">July 21, 2023 • Lucas Boemeke</div>
-                    <button class="px-2 py-1 bg-[#2B2C2F] rounded-full flex items-center gap-1">
-                        <img class="w-7 button"
-                            src='//de9xxjhuq2c2j.cloudfront.net/apps/live-20200930-1/images/emoji/emoji-apple/1f603.png' />
-                        <p class="text-white font-semibold text-sm">14</p>
-                    </button>
-                </div>
-            </div>
-            <div class="flex w-1/5 items-center justify-end">
-                <button class="rounded-lg bg-[#00897B] px-4 py-3 flex flex-col justify-center items-center gap-0">
-                    <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.50684 0L16.3011 13.5H0.712607L8.50684 0Z" fill="white" />
-                    </svg>
-                    <p class="text-white font-semibold text-sm">450</p>
-                </button>
-            </div>
-        </div>
-
-        <div class="text-white flex w-[50%] flex-row rounded-lg border border-gray-100 bg-transparent p-4 shadow-xl">
-            <div class="grid w-4/5 gap-2">
-                <h1 class="text-3xl font-semibold">HTML Crawler NPM Packages</h1>
-                <div class="flex items-center gap-2">
-                    <div class="text-md">July 21, 2023 • Lucas Boemeke</div>
-                    <button class="px-2 py-1 bg-[#2B2C2F] rounded-full flex items-center gap-1">
-                        <img class="w-7 button"
-                            src='//de9xxjhuq2c2j.cloudfront.net/apps/live-20200930-1/images/emoji/emoji-apple/1f603.png' />
-                        <p class="text-white font-semibold text-sm">14</p>
-                    </button>
-                </div>
-            </div>
-            <div class="flex w-1/5 items-center justify-end">
-                <button class="rounded-lg bg-[#00897B] px-4 py-3 flex flex-col justify-center items-center gap-0">
-                    <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.50684 0L16.3011 13.5H0.712607L8.50684 0Z" fill="white" />
-                    </svg>
-                    <p class="text-white font-semibold text-sm">450</p>
-                </button>
-            </div>
-        </div>
+        </form>
 
     </main>
 </body>
 
 <script src="./config-tailwind.js"></script>
+
+<script>
+
+</script>
 
 </html>
