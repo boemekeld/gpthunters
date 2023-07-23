@@ -4,8 +4,17 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preload" href="https://cdn.openai.com/common/fonts/soehne/soehne-buch.woff2" as="font" crossorigin="">
+    <link rel="preload" href="https://cdn.openai.com/common/fonts/soehne/soehne-halbfett.woff2" as="font" crossorigin="">
+    <link rel="preload" href="https://cdn.openai.com/common/fonts/soehne/soehne-mono-buch.woff2" as="font" crossorigin="">
+    <link rel="preload" href="https://cdn.openai.com/common/fonts/soehne/soehne-mono-halbfett.woff2" as="font" crossorigin="">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>GPT Hunters</title>
+    <style>
+        body {
+            font-family: Söhne,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,Helvetica Neue,Arial,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+        }
+    </style>
 </head>
 
 <body class="dark:bg-gray-800">
@@ -17,7 +26,7 @@
 
     <!-- Componente de visualizacao restante renderizado pelo crawler -->
 
-    <!-- Main Content With GPT Template -->
+    <!-- Conteudo principal do template do GPT -->
     <main class="transition-width relative flex h-full w-full flex-1 flex-col items-stretch overflow-auto">
         <!-- Inicio primeira Div -->
         <div class="flex-1 overflow-hidden">
@@ -45,7 +54,7 @@
         </div>
         <!-- Fim primeira Div -->
     </main>
-    <!-- Fim Main Content With GPT Template -->
+    <!-- Fim Conteudo principal do template do GPT -->
 
 </body>
 
@@ -62,7 +71,8 @@
             window.location.href = '/'
             return
         }
-
+        
+        setLoading(true)
         const response = await serviceGetLoadCrawler(url)
         console.log("Resposta: ", response)
         const {statusCode, body: { data }} = response
@@ -71,10 +81,19 @@
             window.location.href = '/'
             return
         }
-    
+        setLoading(false)
         const { title, author, date, content } = data
         componentHeader.innerHTML = ComponentHeader(title, author, date)
         crawlerContent.innerHTML = content.join('\n')
+    }
+    
+    function setLoading(enable=false){
+        if(enable) {
+            crawlerContent.classList.add('flex', 'flex-col', 'animate-pulse', 'justify-center', 'items-center')
+            crawlerContent.innerHTML = ComponentLoading()
+        } else {
+            crawlerContent.classList.remove('flex', 'flex-col', 'animate-pulse', 'justify-center', 'items-center')
+        }
     }
 
     async function serviceGetLoadCrawler(url){
@@ -91,6 +110,15 @@
         aux += `    <h1 class="max-w-md text-3xl font-semibold leading-tight text-gray-700 dark:text-gray-100 sm:text-4xl">${title}</h1>`
         aux += `    <div class="pt-3 text-base text-gray-400 sm:pt-4">${author_date}</div>`
         aux += `</div>`
+        return aux
+    }
+
+    function ComponentLoading(){
+        let aux = ""
+        aux += '<svg style="color: white" xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-repeat animate-spin" viewBox="0 0 16 16">'
+        aux += '    <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>'
+        aux += '    <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>'
+        aux += '</svg>'
         return aux
     }
 
