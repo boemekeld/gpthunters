@@ -1,0 +1,8 @@
+{
+  "name": "gpthunters",
+  "version": "1.0.0",
+  "workspaces": [
+    "api/core",
+    "packages/gpt-crawler"
+  ]
+}
