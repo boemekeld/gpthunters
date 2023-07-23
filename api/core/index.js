@@ -6,6 +6,18 @@ api.get('/', async (req, res) => {
 
 api.get('/crawler', async (req, res) => {
   try {
+
+    /*
+    const drizzle = require('drizzle-orm/libsql').drizzle;
+    const createClient = require('@libsql/client').createClient;
+
+    const client = createClient({ url: 'DATABASE_URL', authToken: 'DATABASE_AUTH_TOKEN' });
+     
+    const db = drizzle(client);
+     
+    const result = await db.select().from(users).all()
+    */
+
     const GptCrawler = require("gpt-crawler");
 
     const url = req.query["url"] || '';
@@ -19,15 +31,16 @@ api.get('/crawler', async (req, res) => {
   
     const response = {
       statusCode: 200,
-      body: JSON.stringify({
+      body: {
         data,
-      }),
+      },
     };
     return response;
   } catch (error) {
+    console.error(error);
     return {
       statusCode: 500,
-      body: JSON.stringify(error),
+      body: JSON.stringify(error.message),
     };
   }
 });
