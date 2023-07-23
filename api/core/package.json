@@ -1,11 +1,8 @@
 {
   "dependencies": {
     "@libsql/client": "^0.1.6",
-    "drizzle-orm": "^0.27.2",
     "gpt-crawler": "file:../../packages/gpt-crawler",
-    "lambda-api": "^1.0.3"
-  },
-  "devDependencies": {
-    "drizzle-kit": "^0.19.10"
+    "lambda-api": "^1.0.3",
+    "uuid": "^9.0.0"
   }
 }
