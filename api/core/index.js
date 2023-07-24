@@ -9,6 +9,10 @@ api.get('/', async (req, res) => {
   return { status: 'ok', message: xpto() };
 });
 
+api.get('/testando', async (req, res) => {
+  return { status: 'ok', message: xpto() };
+});
+
 api.get('/list', async (req, res) => {
   try {
     res.cors();
