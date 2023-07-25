@@ -4,33 +4,23 @@ const { v4: uuidv4 } = require('uuid');
 
 const lambda = require('lambda-api')
 
+function parseError(err, req, res) {
+  return res.status(500).json({ error: err.message, type: err.type })
+}
+
 const api = lambda({
   cors: true,
   corsAllowOrigin: '*',
 });
 
-function choiceRandom(lista) {
-  let index = Math.floor(Math.random() * lista.length)
-  return lista[index]
-}
+api.get("/error", (req, res) => {
+  try {
+    throw new Error("This is an error");
+  } catch (error) {
+    return parseError(error, req, res);
+  }
+});
 
-api.get("/teste", async function teste(req, res) {
-  let lista = [true, true, false]
-  let choice = choiceRandom(lista)
-  if (choice) throw new Error("Erro teste")
-  return res.status(201).json({ mensagem: "ok" })
-})
-
-const errorHandler1 = (err, req, res, next) => {
-  console.error('Erro detectado em errorHandler1:', err);
-  res.status(500).json({ error: 'Ocorreu um erro no servidor.', message: err.message });
-};
-
-api.get('/erro', withTryCatch(async (req, res, next) => {
-  throw new Error('Erro de exemplo');
-}));
-
-api.use(errorHandler1);
 
 api.get('/', async (req, res) => {
   return { status: 'ok' };
@@ -161,9 +151,6 @@ api.get('/crawler', async (req, res) => {
   }
 });
 
-api.use((err, req, res, next) => {
-  return res.status(500).json({ error: err.message, type: err.type });
-});
 
 exports.handler = async (event, context) => {
   return await api.run(event, context);
