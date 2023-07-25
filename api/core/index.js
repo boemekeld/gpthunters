@@ -11,25 +11,23 @@ const api = lambda({
 });
 
 
-const handler = (callback) => {
-  return (req, res) => {
-    try {
-      return Promise.resolve(callback(req, res))
-    } catch (error) {
-      return Promise.reject(errorHandler(error, req, res))
-    }
+export const resolver = (callback) => {
+  return (req, res, next) => {
+    return Promise
+      .resolve(callback(req, res, next))
+      .catch(e => next(e))
   }
 }
 
-const errorHandler = (error, req, res) => {
-  return res.status(500).json({ error: 'Internal server error', type: error.name, message: error.message })
+export const errorHandler = (erro, request, response, next) => {
+  return response.status(500).json({ error: 'Internal server error', type: erro.name, message: erro.message })
 }
 
 const choiceRandom = (list) => {
   return list[Math.floor(Math.random() * list.length)];
 }
 
-api.get("/teste", handler(async (req, res) => {
+api.get("/teste", resolver(async (req, res) => {
   let lista = [true, true, false]
   let choice = choiceRandom(lista)
   if (choice) throw new Error("Erro teste")
