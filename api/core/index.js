@@ -12,10 +12,12 @@ const api = lambda({
 
 
 export const resolver = (callback) => {
-  return (req, res, next) => {
-    return Promise
-      .resolve(callback(req, res, next))
-      .catch(e => next(e))
+  return async (req, res) => {
+    try {
+      return await callback(req, res);
+    } catch (error) {
+      return res.status(500).json({ error: 'Internal server error', type: error.name, message: error.message })
+    }
   }
 }
 
@@ -27,12 +29,14 @@ const choiceRandom = (list) => {
   return list[Math.floor(Math.random() * list.length)];
 }
 
-api.get("/teste", resolver(async (req, res) => {
+function teste(req, res) {
   let lista = [true, true, false]
   let choice = choiceRandom(lista)
   if (choice) throw new Error("Erro teste")
   return { status: 'ok' };
-}));
+}
+
+api.get("/teste", resolver(teste))
 
 api.get('/', async (req, res) => {
   return { status: 'ok' };
@@ -163,7 +167,6 @@ api.get('/crawler', async (req, res) => {
   }
 });
 
-api.use(errorHandler)
 
 exports.handler = async (event, context) => {
   return await api.run(event, context);
