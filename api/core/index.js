@@ -4,7 +4,7 @@ const { v4: uuidv4 } = require('uuid');
 
 const lambda = require('lambda-api');
 
-const { resolver, errorHandler } = require("./middleware")
+const { handler } = require("./middleware")
 
 const api = lambda({
   cors: true,
@@ -19,9 +19,17 @@ api.get('/', async (req, res) => {
   return { status: 'ok' };
 });
 
-api.get("/teste", resolver(async (req, res) => {
+// sleep promise
+async function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+api.get("/teste", handler(async (req, res) => {
   let lista = [true, true, false]
+  let listaSleep = [1000, 2000, 3000]
+  let choiceSleep = randomChoice(listaSleep)
   let choice = randomChoice(lista)
+  await sleep(choiceSleep)
   if (choice) throw new Error("Erro teste")
   return { status: 'ok' };
 }));
