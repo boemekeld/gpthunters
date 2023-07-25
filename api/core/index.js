@@ -3,14 +3,14 @@ const createClient = require('@libsql/client').createClient;
 const client = createClient({ url: 'libsql://gpthunters-boemekeld.turso.io', authToken: 'eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTAwOTUzMDIsImlkIjoiYjM1YjEwNjctMjkyNS0xMWVlLTk1ODEtMWE4NjY5MWUyODU2In0.T93iddRYFyfM0hKZo0zxaM131V8TbtZN80uC8NWlNSJz7EHhW-pMptnAlH6ZcIAZlaocfc_PRrFbjnXgdW99Dw' });
 const { v4: uuidv4 } = require('uuid');
 
-const { xpto } = require('./repository')
+const { ChatRepository } = require('./repository');
+
+const chatRepository = new ChatRepository();
+
+
 
 api.get('/', async (req, res) => {
-  return { status: 'ok', message: xpto() };
-});
-
-api.get('/testando', async (req, res) => {
-  return { status: 'ok', message: xpto() };
+  return { status: 'ok', all: chatRepository.findAll() };
 });
 
 api.get('/list', async (req, res) => {
