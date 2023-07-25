@@ -19,17 +19,9 @@ api.get('/', async (req, res) => {
   return { status: 'ok' };
 });
 
-// sleep promise
-async function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 api.get("/teste", handler(async (req, res) => {
   let lista = [true, true, false]
-  let listaSleep = [1000, 2000, 3000]
-  let choiceSleep = randomChoice(listaSleep)
   let choice = randomChoice(lista)
-  await sleep(choiceSleep)
   if (choice) throw new Error("Erro teste")
   return { status: 'ok' };
 }));
