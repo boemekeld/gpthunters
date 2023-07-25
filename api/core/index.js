@@ -151,7 +151,7 @@ api.get('/crawler', async (req, res) => {
 });
 
 api.use((err, req, res, next) => {
-  return res.status(500).json({ error: err.message });
+  return res.status(500).json({ error: err.message, type: err.type });
 });
 
 exports.handler = async (event, context) => {
