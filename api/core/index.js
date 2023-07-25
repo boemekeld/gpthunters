@@ -4,8 +4,6 @@ const { v4: uuidv4 } = require('uuid');
 
 const lambda = require('lambda-api')
 
-const { ResponseError } = lambda
-
 const api = lambda({
   cors: true,
   corsAllowOrigin: '*',
@@ -19,7 +17,7 @@ function choiceRandom(lista) {
 api.get("/teste", async function teste(req, res) {
   let lista = [true, true, false]
   let choice = choiceRandom(lista)
-  if (choice) throw new ResponseError("Erro teste", 404)
+  if (choice) throw new Error("Erro teste")
   return res.status(201).json({ mensagem: "ok" })
 })
 
@@ -152,6 +150,9 @@ api.get('/crawler', async (req, res) => {
   }
 });
 
+api.use((err, req, res, next) => {
+  return res.status(500).json({ error: err.message });
+});
 
 exports.handler = async (event, context) => {
   return await api.run(event, context);
