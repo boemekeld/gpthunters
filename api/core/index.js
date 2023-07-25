@@ -21,6 +21,17 @@ api.get("/teste", async function teste(req, res) {
   return res.status(201).json({ mensagem: "ok" })
 })
 
+const errorHandler1 = (err, req, res, next) => {
+  console.error('Erro detectado em errorHandler1:', err);
+  res.status(500).json({ error: 'Ocorreu um erro no servidor.', message: err.message });
+};
+
+api.get('/erro', withTryCatch(async (req, res, next) => {
+  throw new Error('Erro de exemplo');
+}));
+
+api.use(errorHandler1);
+
 api.get('/', async (req, res) => {
   return { status: 'ok' };
 });
@@ -151,8 +162,11 @@ api.get('/crawler', async (req, res) => {
 });
 
 api.use((err, req, res, next) => {
-  return res.status(500).json({ error: err.message, type: err.type });
+  res.status(500).json({ error: err.message, type: err.type });
+  next()
 });
+
+api.use(errorHandler1);
 
 exports.handler = async (event, context) => {
   return await api.run(event, context);
