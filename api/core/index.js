@@ -1,32 +1,11 @@
+const api = require('lambda-api')();
 const createClient = require('@libsql/client').createClient;
 const client = createClient({ url: 'libsql://gpthunters-boemekeld.turso.io', authToken: 'eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTAwOTUzMDIsImlkIjoiYjM1YjEwNjctMjkyNS0xMWVlLTk1ODEtMWE4NjY5MWUyODU2In0.T93iddRYFyfM0hKZo0zxaM131V8TbtZN80uC8NWlNSJz7EHhW-pMptnAlH6ZcIAZlaocfc_PRrFbjnXgdW99Dw' });
 const { v4: uuidv4 } = require('uuid');
 
-const lambda = require('lambda-api');
-
-const { handler } = require("./middleware")
-
-const api = lambda({
-  cors: true,
-  corsAllowOrigin: '*',
-});
-
-function randomChoice(arr) {
-  return arr[Math.floor(arr.length * Math.random())];
-}
-
 api.get('/', async (req, res) => {
   return { status: 'ok' };
 });
-
-
-api.get("/teste", handler(async (req, res) => {
-  let lista = [true, true, false]
-  let choice = randomChoice(lista)
-  if (choice) throw new Error("Erro teste")
-  return { status: 'ok' };
-}));
-
 
 api.get('/list', async (req, res) => {
   try {
@@ -152,10 +131,6 @@ api.get('/crawler', async (req, res) => {
     };
   }
 });
-
-
-api.use(errorHandler);
-
 
 exports.handler = async (event, context) => {
   return await api.run(event, context);
