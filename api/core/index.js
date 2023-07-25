@@ -11,6 +11,11 @@ const api = lambda({
   corsAllowOrigin: '*',
 });
 
+function choiceRandom(lista) {
+  let index = Math.floor(Math.random() * lista.length)
+  return lista[index]
+}
+
 api.get("/teste", async function teste(req, res) {
   let lista = [true, true, false]
   let choice = choiceRandom(lista)
