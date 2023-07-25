@@ -22,8 +22,6 @@ const handler = (callback) => {
 }
 
 const errorHandler = (error, req, res) => {
-  if (error instanceof ResponseHttpError)
-    return res.status(error.statusCode).json({ error: error.message })
   return res.status(500).json({ error: 'Internal server error', type: error.name, message: error.message })
 }
 
