@@ -4,21 +4,9 @@ const { v4: uuidv4 } = require('uuid');
 
 const lambda = require('lambda-api')
 
-function parseError(err, req, res) {
-  return res.status(500).json({ error: err.message, type: err.type })
-}
-
 const api = lambda({
   cors: true,
   corsAllowOrigin: '*',
-});
-
-api.get("/error", (req, res) => {
-  try {
-    throw new Error("This is an error");
-  } catch (error) {
-    return parseError(error, req, res);
-  }
 });
 
 api.get('/', async (req, res) => {
@@ -148,10 +136,6 @@ api.get('/crawler', async (req, res) => {
       body: JSON.stringify(error.message),
     };
   }
-});
-
-api.use(async function (err, req, res, next) {
-  res.status(502).json({ error: err.message, type: err.type });
 });
 
 exports.handler = async (event, context) => {
