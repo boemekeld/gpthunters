@@ -162,11 +162,8 @@ api.get('/crawler', async (req, res) => {
 });
 
 api.use((err, req, res, next) => {
-  res.status(500).json({ error: err.message, type: err.type });
-  next()
+  return res.status(500).json({ error: err.message, type: err.type });
 });
-
-api.use(errorHandler1);
 
 exports.handler = async (event, context) => {
   return await api.run(event, context);
