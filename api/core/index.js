@@ -163,6 +163,8 @@ api.get('/crawler', async (req, res) => {
   }
 });
 
+api.use(errorHandler)
+
 exports.handler = async (event, context) => {
   return await api.run(event, context);
 };
