@@ -16,7 +16,7 @@ const handler = (callback) => {
     try {
       return Promise.resolve(callback(req, res))
     } catch (error) {
-      return errorHandler(error, req, res)
+      return Promise.reject(errorHandler(error, req, res))
     }
   }
 }
