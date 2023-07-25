@@ -2,41 +2,21 @@ const createClient = require('@libsql/client').createClient;
 const client = createClient({ url: 'libsql://gpthunters-boemekeld.turso.io', authToken: 'eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTAwOTUzMDIsImlkIjoiYjM1YjEwNjctMjkyNS0xMWVlLTk1ODEtMWE4NjY5MWUyODU2In0.T93iddRYFyfM0hKZo0zxaM131V8TbtZN80uC8NWlNSJz7EHhW-pMptnAlH6ZcIAZlaocfc_PRrFbjnXgdW99Dw' });
 const { v4: uuidv4 } = require('uuid');
 
-
 const lambda = require('lambda-api')
+
+const { ResponseError } = lambda
 
 const api = lambda({
   cors: true,
   corsAllowOrigin: '*',
 });
 
-
-export const resolver = (callback) => {
-  return async (req, res) => {
-    try {
-      return await callback(req, res);
-    } catch (error) {
-      return res.status(500).json({ error: 'Internal server error', type: error.name, message: error.message })
-    }
-  }
-}
-
-export const errorHandler = (erro, request, response, next) => {
-  return response.status(500).json({ error: 'Internal server error', type: erro.name, message: erro.message })
-}
-
-const choiceRandom = (list) => {
-  return list[Math.floor(Math.random() * list.length)];
-}
-
-function teste(req, res) {
+api.get("/teste", async function teste(req, res) {
   let lista = [true, true, false]
   let choice = choiceRandom(lista)
-  if (choice) throw new Error("Erro teste")
-  return { status: 'ok' };
-}
-
-api.get("/teste", resolver(teste))
+  if (choice) throw new ResponseError("Erro teste", 404)
+  return res.status(201).json({ mensagem: "ok" })
+})
 
 api.get('/', async (req, res) => {
   return { status: 'ok' };
