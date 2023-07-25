@@ -21,7 +21,6 @@ api.get("/error", (req, res) => {
   }
 });
 
-
 api.get('/', async (req, res) => {
   return { status: 'ok' };
 });
@@ -151,6 +150,9 @@ api.get('/crawler', async (req, res) => {
   }
 });
 
+api.use(async function (err, req, res, next) {
+  res.status(502).json({ error: err.message, type: err.type });
+});
 
 exports.handler = async (event, context) => {
   return await api.run(event, context);
