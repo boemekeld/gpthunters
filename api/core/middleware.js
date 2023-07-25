@@ -10,8 +10,8 @@ const handler = (callback) => {
 
 const errorHandler = (error, req, res) => {
     if (error instanceof ResponseHttpError)
-        return response.status(error.statusCode).json({ error: error.message })
-    return response.status(500).json({ error: 'Internal server error', type: error.name, message: error.message })
+        return res.status(error.statusCode).json({ error: error.message })
+    return res.status(500).json({ error: 'Internal server error', type: error.name, message: error.message })
 }
 
 module.exports = {
